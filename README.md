@@ -32,3 +32,11 @@ Le script :
 - entraîne un modèle MobileNetV2 (transfer learning)
 - sauvegarde le modèle dans `models/model_dechets.keras`
 - écrit les métriques d'entraînement/validation dans `logs/metrics.csv`
+
+## Lancer l'app Streamlit (optionnel)
+
+```bash
+streamlit run app/app.py
+```
+
+Prérequis : un modèle entraîné présent dans `models/model_dechets.keras`.
