@@ -20,10 +20,15 @@ Comptage observé dans la source actuelle :
 - papier: 55 images
 - plastique: 62 images
 
-## Lancer le préprocessing + split
+## Lancer l'entraînement
 
 ```bash
-python train.py --data-dir ../data/train
+python train.py --data-dir ../data/train --epochs 8
 ```
 
-Le script charge le dataset, applique un split train/validation (80/20) et affiche les classes détectées.
+Le script :
+
+- charge le dataset et applique un split train/validation (80/20)
+- entraîne un modèle MobileNetV2 (transfer learning)
+- sauvegarde le modèle dans `models/model_dechets.keras`
+- écrit les métriques d'entraînement/validation dans `logs/metrics.csv`

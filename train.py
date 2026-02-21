@@ -46,6 +46,7 @@ def parse_args():
     parser.add_argument("--epochs", type=int, default=8)
     parser.add_argument("--learning-rate", type=float, default=1e-4)
     parser.add_argument("--output", type=Path, default=Path("models/model_dechets.keras"))
+    parser.add_argument("--metrics-path", type=Path, default=Path("logs/metrics.csv"))
     return parser.parse_args()
 
 
@@ -70,11 +71,21 @@ def main():
         metrics=["accuracy"],
     )
 
-    model.fit(train_ds, epochs=args.epochs)
+    args.metrics_path.parent.mkdir(parents=True, exist_ok=True)
+    csv_logger = tf.keras.callbacks.CSVLogger(args.metrics_path, append=False)
+
+    history = model.fit(
+        train_ds,
+        validation_data=val_ds,
+        epochs=args.epochs,
+        callbacks=[csv_logger],
+    )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     model.save(args.output)
     print(f"Modèle sauvegardé: {args.output}")
+    print(f"Métriques enregistrées: {args.metrics_path}")
+    print("Dernière val_accuracy:", history.history["val_accuracy"][-1])
 
 
 if __name__ == "__main__":
