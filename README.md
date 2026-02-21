@@ -40,3 +40,11 @@ streamlit run app/app.py
 ```
 
 Prérequis : un modèle entraîné présent dans `models/model_dechets.keras`.
+
+## Tests rapides
+
+```bash
+pytest -q
+```
+
+Le test vérifie la dimension de sortie du modèle et la cohérence des probabilités (softmax).

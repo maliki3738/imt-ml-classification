@@ -2,3 +2,4 @@ tensorflow>=2.15,<3
 streamlit>=1.35
 pillow>=10.0
 pandas>=2.0
+pytest>=8.0
