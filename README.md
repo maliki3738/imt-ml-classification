@@ -48,3 +48,7 @@ pytest -q
 ```
 
 Le test vérifie la dimension de sortie du modèle et la cohérence des probabilités (softmax).
+
+## Licence
+
+Apache-2.0 — voir [LICENSE](LICENSE).
